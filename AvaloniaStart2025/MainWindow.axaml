@@ -4,27 +4,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaStart2025.MainWindow"
-        Title="AvaloniaStart2025">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock
-            Text="{Binding 
-            ElementName=Text1, 
-            Path=Text, 
-            UpdateSourceTrigger=PropertyChanged}"
-            />
-        <TextBox Grid.Row="1" Name="Text1"/>
-        <Button Grid.Row="2"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Center"
-                Click="Button_OnClick" >
-            <StackPanel>
-                <Button Content="ахаха" Click="SecondButtonClick" Padding="15"/>
-            </StackPanel>
-        </Button>
+        WindowStartupLocation="CenterScreen">
+    <Window.Title>Заголовок</Window.Title>
+    <!-- CanResize="False" 
+         CanMaximize="False" 
+         WindowState="Normal" -->
+    <!-- Список контейнеров:
+    Grid - сетка
+    StackPanel - стопка(список) из элементов
+    WrapPanel - StackPanel с возможностью переноса на следующую строку
+    Canvas - контейнер с координатами
+    DockPanel - состоит из нескольких блоков, каждый из которых приклеен к своей стороне 
+    -->
+    <Grid RowDefinitions="Auto, Auto, Auto, *, *, *, *, *"
+          ColumnDefinitions="*, 2.5*, 0.2*, 0.1*">
+        
+        <TextBlock Grid.RowSpan="2">Привет</TextBlock>
+        <TextBlock Background="Red" Height="300" Grid.Row="1" Grid.Column="1">Пока</TextBlock>
+        <Button HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="2">Нажми меня</Button>
+        
+        <StackPanel Grid.Row="3">
+            <Button Content="Раз"/>
+            <Button Content="Два"/>
+            <Button Content="Три"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+            <Button Content="Раз"/>
+            <Button Content="Два"/>
+            <Button Content="Три"/>
+        </StackPanel>
+        
+        <StackPanel Width="300" Grid.ColumnSpan="5" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4">
+            <TextBlock Text="Логин"/>
+            <TextBox /> 
+            <TextBlock Text="Пароль"/>
+            <TextBox PasswordChar="*"></TextBox>
+            <Button Content="Войти" HorizontalAlignment="Right"/>
+        </StackPanel>
+        
+        <WrapPanel Grid.Row="5" Orientation="Horizontal">
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+            <Button Content="Войти" />
+        </WrapPanel>
+        
+        <Canvas Grid.Row="6">
+            <Rectangle Width="200" Height="100" Fill="Red"/>
+            <Button Content="Войти" Canvas.Top="50" Canvas.Left="160"/>
+        </Canvas>
+        
+        <DockPanel Grid.ColumnSpan="7" Grid.Row="7">
+            <Rectangle Width="100" Height="50" Fill="Yellow" DockPanel.Dock="Left"/>
+            <Rectangle Width="100" Height="50" Fill="Green"  DockPanel.Dock="Right"/>
+            <Rectangle  Width="100" Height="50" Fill="#FF00DD"  DockPanel.Dock="Top"/>
+            <Rectangle Width="100" Height="50" Fill="#99DD7788"  DockPanel.Dock="Bottom"/>
+        </DockPanel>
+            
     </Grid>
 </Window>
